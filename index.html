@@ -2,9 +2,187 @@
 <html>
 <head>
   <title>AKM</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <h1>Hello, I am AKM</h1>
-  <p>Building in AI, Python & Systems.</p>
+  <header>
+    <div class="brand">
+      <div class="logo">AK</div>
+      <div>
+        <div style="font-weight:700">Ayush Kumar Mishra</div>
+        <div class="muted small">Class 11 • Python · AI · Networking</div>
+      </div>
+    </div>
+
+    <nav>
+      <a class="cta" href="#home">Home</a>
+      <a class="cta" href="#projects">Projects</a>
+      <a class="cta" href="#labs">Labs</a>
+      <a class="cta" href="knowledge_vault">Knowledge Vault</a>
+      <a class="cta" href="#about">About</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+  <!-- -----------------------Hero Section -------------------->
+  <section class="hero_section">
+    <div style="width: 50%;">
+      <h1 style="color: white;">Ayush Kumar Mishra</h1>
+      <br>
+      <p>Class 11 STEM Student</p>
+      <p style="color: #69b4ff;text-shadow: 0 0 5px #69b4ff;">Building in Python, AI & Systems</p>
+      <br>
+      <input class="hero_button button" type="button" value="View Projects" onclick="window.location.href='#projects';">
+      <input class="hero_button button" style="margin-left: 10px;" type="button" value="View Labs" onclick="window.location.href='#labs';">
+    </div>
+
+    <aside class="Code_block" style="width: 45%;">
+      
+      <div class="Code_layout">
+        <p>>_</p>
+        <ul>
+          <li>Learning, coding, experimenting ... <span class="Code_cursor">|</span></li>
+          <br>
+        </ul>
+    </div>
+    <br>
+    <span style="color: #69b4ff; text-align: center;">    # Be Better Then Your Yesterday</span>
+    </aside>
+    <aside style="width: 3%;float: right;"></aside>      
+  </section>
+
+
+    <!-- -----------------------project -------------------->
+       <hr style="color: azure;">
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects_container">
+    <div class="project_card">
+      <div>
+      <h3>Password checker</h3>
+      <p style ="color: #fff;">Password strength evaluation</p>
+      <p>HTML | CSS | JavaScript</p>
+      </div>
+     <a href="https://github.com/Ayush2003gn/Password-Checker" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="project_card">
+      <div>
+      <h3>AI Chatbot</h3>
+      <p style ="color: #fff;">Conversational AI chatbot using OpenAI API</p>
+      <p>Python | Flask | OpenAI API</p>
+      </div>
+     <a href="https://github.com/Ayush2003gn/Password-Checker" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="project_card">
+      <div>
+      <h3>Personal Portfolio</h3>
+      <p style ="color: #fff;">My personal website showcasing projects and skills</p>
+      <p>HTML | CSS | JavaScript</p>
+      </div>
+     <a href="https://github.com/Ayush2003gn/Personal-Portfolio" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="project_card">
+      <div>
+      <h3>Network Scanner</h3>
+      <p style ="color: #fff;">Python script to scan local network for devices</p>
+      <p>Python | Scapy</p>
+      </div>
+      <a href="https://github.com/Ayush2003gn/Network-Scanner" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- -----------------------Labs -------------------->
+  <section id="labs">
+        <h2>Tech Labs</h2>
+    <div class="lab__container">
+
+    <div class="lab">
+      <div>
+      <h3>Network ping test</h3>
+      <p>ping result : 12 ms to 8.8.8.8</p>
+      </div>
+      <img src="./images/ping_test.png" alt="Network ping test result">
+      <br>
+      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="lab">
+      <div>
+      <h3>Wireshark Analysis</h3>
+      <p>Packet Capture Logs</p>
+      </div>
+      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_02_33 PM.png" alt="Wireshark packet capture logs">
+      <br>
+      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="lab">
+      <div>
+      <h3>Python Script: Port Scanner</h3>
+      <p>Scanning open ports ...</p>
+      </div>
+      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_03_03 PM.png" alt="Port scanner output">
+      <br>
+      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+    <div class="lab">
+      <div>
+        <h3>Linux Commands</h3>
+        <p>grep, cmnod, ifconfig</p>
+      </div>
+      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_02_33 PM.png" alt="Linux commands output">
+      <br>
+      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
+    </div>
+
+  </section>
+  <hr>
+  <!-----------------------Knowledge Vault -------------------->
+  <section id="knowledge_vault">
+    <h2>Knowledge Vault</h2>
+    <div class="knowledge_container">
+    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
+      <h3>Physics Notes</h3>
+    </div>
+    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
+      <h3>Math Tutorials</h3>
+    </div>
+    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
+      <h3>Python Guides</h3>
+    </div>
+    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
+      <h3>Networking Tips</h3>
+    </div>
+    </div>
+  </section>
+  <hr style="color: azure;">
+  <!-----------------------About Me -------------------->
+  <section id="about_me">
+    <h2>About Me</h2>
+    <p>Systems Thinker | AI Enthusiast | Developer</p>
+    <p>Class 11 STEM student with a passion for technology, Al, and networking. Focused on building and learning for the long term.</p>
+  </section>
+  <hr>
+  <!-----------------------Contact -------------------->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact_info">
+      <p class="eml">Email: <a href="mailto:ayush2003gn@gmail.com">ayush2003gn@gmail.com</a></p>
+      <a href="https://github.com/Ayush2003gn" target="_blank"><span class="fa fa-github"></span></a>
+      <a href="https://linkedin.com/in/ayush2003gn" target="_blank"><span class="fa fa-linkedin"></span></a>
+      <a href="https://twitter.com/Ayush2003gn" target="_blank"><span class="fa fa-twitter"></span></a>
+      <a href="https://facebook.com/Ayush2003gn" target="_blank"><span class="fa fa-facebook"></span></a>
+      <a href="https://instagram.com/Ayush2003gn" target="_blank"><span class="fa fa-instagram"></span></a>
+    </div>
+      
+  </section>
 </body>
 </html>

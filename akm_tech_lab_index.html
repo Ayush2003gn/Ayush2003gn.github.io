@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AKM Tech Lab — Ayush Kumar Mishra</title>
+  <meta name="description" content="AKM Tech Lab — Class 11 STEM student. Projects, labs, and technical notes in Python, AI & Networking." />
+
+  <!-- Simple, self-contained single-file static site. Edit placeholders below. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0d1117; /* dark background */
+      --surface:#0f1720;
+      --muted:#8b949e;
+      --accent:#58a6ff; /* electric blue */
+      --glass: rgba(255,255,255,0.03);
+      --card:#0b1220;
+      --radius:12px;
+      color-scheme: dark;
+    }
+    
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#c9d1d9}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:1100px;margin:36px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#2dd4bf);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021024}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 12px;border-radius:8px;font-size:14px;color:var(--muted)}
+    nav a:hover{color:#fff;background:var(--glass)}
+    .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg, rgba(88,166,255,0.12), rgba(45,212,191,0.06));border:1px solid rgba(88,166,255,0.08);color:var(--accent);font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-top:36px}
+    .hero h1{font-size:34px;margin:0}
+    .hero p{color:var(--muted);margin:12px 0 18px;line-height:1.5}
+    .hero .buttons{display:flex;gap:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Terminal style box */
+    .terminal{background:#02060a;padding:18px;border-radius:10px;color:#9be3ff;font-family:monospace;font-size:13px;line-height:1.6}
+    .muted{color:var(--muted)}
+
+    /* Grid sections */
+    section + section{margin-top:28px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project-card{background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .project-card h3{margin:0 0 6px}
+    .meta{color:var(--muted);font-size:13px}
+
+    /* Notes / Labs list */
+    .list{display:grid;gap:10px}
+    .list-item{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+
+    footer{margin:40px 0 80px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      header{flex-direction:column;align-items:flex-start}
+    }
+
+    /* Small utilities */
+    .accent{color:var(--accent)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(88,166,255,0.06);color:var(--muted);font-size:13px}
+    .small{font-size:13px}
+
+    /* subtle fade-in */
+    .fade{animation:fadeIn .7s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* footer links */
+    .socials{display:flex;gap:8px}
+    .socials a{padding:6px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px}
+
+    /* Search / filter */
+    .search{display:flex;gap:8px;align-items:center}
+    input[type=text]{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;color:#cbd5e1}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">AK</div>
+        <div>
+          <div style="font-weight:700">Ayush Kumar Mishra</div>
+          <div class="muted small">Class 11 • Python · AI · Networking</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#labs">Labs</a>
+        <a href="#notes">Notes</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero fade">
+        <div>
+          <h1>AKM Tech Lab — Dark Professional Edition</h1>
+          <p class="muted">Public lab & portfolio of Ayush Kumar Mishra. Frontend-first, built to evolve into full-stack tools: study trackers, subnet calculators, and small AI helpers. Clean technical notes, real experiments, and a public build log.</p>
+
+          <div class="buttons">
+            <a class="cta" href="#projects">View Projects</a>
+            <a class="pill" href="#labs">Open Labs</a>
+          </div>
+
+          <div style="margin-top:18px" class="muted">
+            <strong>Positioning:</strong> Class 11 STEM student focused on building practical tools & learning systems. Execution over perfection.
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div class="small muted">Now building</div>
+              <div class="pill">Frontend → Product-ready</div>
+            </div>
+            <div style="margin-top:12px" class="terminal">
+              $ git clone github.com/your-username/akm-tech-lab
+              <br>$ open index.html
+              <br><span class="muted">// edit content in &lt;main&gt; sections</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px;justify-content:space-between;align-items:center">
+              <div class="small muted">Theme</div>
+              <div class="small">Dark Professional</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:12px">
+          <div>
+            <h2 style="margin:0">Projects</h2>
+            <div class="muted small">Real builds — short, documented, and linked to code.</div>
+          </div>
+          <div class="search">
+            <input id="search" type="text" placeholder="Filter projects (e.g. python, network)" oninput="filterProjects()" />
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:16px" id="projects-grid">
+
+          <!-- Example project cards. Replace with your real projects. -->
+          <article class="project-card" data-tags="python networking">
+            <h3>Subnet Calculator</h3>
+            <div class="meta">Python · IPv4 · learning lab</div>
+            <p class="muted" style="margin-top:8px">A compact subnet calculator that parses CIDR, shows network/broadcast, and suggests subnets. CLI + static demo.</p>
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <a href="#" class="small">GitHub</a>
+              <a href="#" class="small">Live demo</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="python ai">
+            <h3>Study Tracker (static)</h3>
+            <div class="meta">HTML · JS · CSV export</div>
+            <p class="muted" style="margin-top:8px">A frontend prototype that tracks study sessions, exports CSV, and visualizes time per subject.</p>
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <a href="#" class="small">GitHub</a>
+              <a href="#" class="small">Demo</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="security web">
+            <h3>Password Strength Checker</h3>
+            <div class="meta">JS · security</div>
+            <p class="muted" style="margin-top:8px">A client-side tester with entropy estimate and suggestions for strong passphrases.</p>
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <a href="#" class="small">GitHub</a>
+              <a href="#" class="small">Demo</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Labs -->
+      <section id="labs">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 style="margin:0">Tech Labs</h2>
+          <div class="muted small">Experiments, logs, and reproducible steps.</div>
+        </div>
+
+        <div style="margin-top:12px" class="list">
+          <div class="list-item">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <strong>Ping / Reachability Tests</strong>
+                <div class="muted small">Quick notes and sample outputs</div>
+              </div>
+              <div class="muted small">2026-03-02</div>
+            </div>
+            <pre class="terminal" style="margin-top:8px">$ ping -c 4 8.8.8.8
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=115 time=12.3 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=11.7 ms</pre>
+          </div>
+
+          <div class="list-item">
+            <strong>Wireshark notes</strong>
+            <div class="muted small">How I captured DNS queries and filtered by UDP</div>
+            <div style="margin-top:8px" class="muted small">Filters: <code>udp.port == 53</code></div>
+          </div>
+
+          <div class="list-item">
+            <strong>Subnetting exercises</strong>
+            <div class="muted small">Problems and short solutions</div>
+            <ul class="muted small" style="margin:8px 0 0 18px">
+              <li>192.168.0.0/24 → split into /26 ...</li>
+              <li>Explain broadcast vs network address</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Notes / Vault -->
+      <section id="notes">
+        <h2 style="margin:0">Knowledge Vault</h2>
+        <div class="muted small">Short, structured notes — not blog posts.</div>
+
+        <div style="margin-top:12px" class="grid">
+          <div class="project-card">
+            <h3>Physics — Motion Notes</h3>
+            <div class="muted small">Kinematics formulas, solved examples.</div>
+            <p class="muted small">Concise steps I used to solve class problems quickly.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Python Patterns</h3>
+            <div class="muted small">Small patterns I reuse: file I/O, CLI parsing, modular scripts.</div>
+          </div>
+
+          <div class="project-card">
+            <h3>Math Shortcuts</h3>
+            <div class="muted small">Tricks for speed in exams: multiplication shortcuts, modular arithmetic.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <h2 style="margin:0">About</h2>
+        <div class="muted small">Systems thinker. Long-term builder. Focused on execution and technical depth.</div>
+
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="card">
+            <strong>Skills</strong>
+            <ul class="muted small" style="margin:8px 0 0 18px">
+              <li>Python (beginner → intermediate)</li>
+              <li>Frontend: HTML / CSS / JS</li>
+              <li>Networking fundamentals</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Long-term</strong>
+            <p class="muted small" style="margin:8px 0 0">Grow this into a public SaaS: study tools + networking lab + advisory portfolio.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2 style="margin:0">Contact</h2>
+        <div class="muted small">For internships, collaboration, or mentorship.</div>
+
+        <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+          <div class="card" style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <strong>Email</strong>
+                <div class="muted small">ayush@example.com</div>
+              </div>
+              <button onclick="copyEmail()" class="pill">Copy</button>
+            </div>
+            <div style="margin-top:12px" class="muted small">Replace the email above with your preferred contact. You can also link LinkedIn / GitHub below.</div>
+          </div>
+
+          <div style="width:220px" class="card">
+            <strong>Links</strong>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+              <a href="#" class="small">GitHub</a>
+              <a href="#" class="small">LinkedIn / X</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div class="muted small">© Ayush Kumar Mishra — AKM Tech Lab</div>
+        <div class="socials">
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small helper: filter projects by tags or text
+    function filterProjects(){
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('#projects-grid .project-card');
+      cards.forEach(c=>{
+        const tags = (c.getAttribute('data-tags')||'') + ' ' + (c.innerText||'');
+        if(!q) c.style.display='block';
+        else c.style.display = tags.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    }
+
+    function copyEmail(){
+      const email = 'ayush@example.com';
+      navigator.clipboard && navigator.clipboard.writeText(email).then(()=>{
+        alert('Email copied: ' + email);
+      }).catch(()=>{
+        prompt('Copy email:', email);
+      });
+    }
+
+    // small analytics-like event for now (local only)
+    try{
+      window.addEventListener('load',()=>{
+        console.log('AKM Tech Lab loaded');
+      })
+    }catch(e){/* ignore */}
+  </script>
+</body>
+</html>
