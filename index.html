@@ -1,188 +1,478 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AKM</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayush Kumar Mishra | Learning in Public</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: rgba(15, 23, 42, 0.72);
+      --panel-2: rgba(30, 41, 59, 0.8);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #84cc16;
+      --accent-2: #22c55e;
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      --radius: 22px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(132, 204, 22, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 24%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100% - 32px, var(--max)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #0f172a;
+      background: linear-gradient(135deg, var(--accent), #bef264);
+      box-shadow: 0 10px 24px rgba(132, 204, 22, 0.26);
+      font-weight: 900;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .links a { padding: 8px 10px; border-radius: 999px; }
+    .links a:hover { background: rgba(148, 163, 184, 0.08); color: var(--text); }
+
+    .hero {
+      padding: 76px 0 28px;
+    }
+
+    .hero-card, .card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.68));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(132, 204, 22, 0.1);
+      color: #d9f99d;
+      border: 1px solid rgba(132, 204, 22, 0.16);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .lead {
+      max-width: 760px;
+      font-size: 1.06rem;
+      color: #dbeafe;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1220;
+    }
+
+    .btn.secondary {
+      border-color: var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      color: #f8fafc;
+    }
+
+    .stat span { color: var(--muted); font-size: 0.95rem; }
+
+    section { padding: 18px 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .section-title {
+      margin-bottom: 14px;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .muted { color: var(--muted); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--border);
+      color: #e2e8f0;
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .item {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    .item h3 {
+      font-size: 1.03rem;
+      margin-bottom: 4px;
+    }
+
+    .item p { color: var(--muted); }
+
+    .project-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .project {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .project h3 { margin-bottom: 4px; }
+    .project small { color: #bbf7d0; font-weight: 700; }
+
+    .footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .accent-note {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(132, 204, 22, 0.18);
+      background: rgba(132, 204, 22, 0.06);
+      color: #e2e8f0;
+    }
+
+    @media (max-width: 920px) {
+      .grid-2, .grid-3, .stats { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+      .hero-card { padding: 24px; }
+      h1 { max-width: 100%; }
+      .nav-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo">AK</div>
-      <div>
-        <div style="font-weight:700">Ayush Kumar Mishra</div>
-        <div class="muted small">Class 11 • Python · AI · Networking</div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="badge">A</div>
+        <div>
+          <div>Ayush Kumar Mishra</div>
+          <div class="muted" style="font-size:0.88rem; font-weight:500;">Learning in Public</div>
+        </div>
       </div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-
-    <nav>
-      <a class="cta" href="#home">Home</a>
-      <a class="cta" href="#projects">Projects</a>
-      <a class="cta" href="#labs">Labs</a>
-      <a class="cta" href="knowledge_vault">Knowledge Vault</a>
-      <a class="cta" href="#about">About</a>
-      <a class="cta" href="#contact">Contact</a>
-    </nav>
   </header>
-  <!-- -----------------------Hero Section -------------------->
-  <section class="hero_section">
-    <div style="width: 50%;">
-      <h1 style="color: white;">Ayush Kumar Mishra</h1>
-      <br>
-      <p>Class 11 STEM Student</p>
-      <p style="color: #69b4ff;text-shadow: 0 0 5px #69b4ff;">Building in Python, AI & Systems</p>
-      <br>
-      <input class="hero_button button" type="button" value="View Projects" onclick="window.location.href='#projects';">
-      <input class="hero_button button" style="margin-left: 10px;" type="button" value="View Labs" onclick="window.location.href='#labs';">
-    </div>
 
-    <aside class="Code_block" style="width: 45%;">
-      
-      <div class="Code_layout">
-        <p>>_</p>
-        <ul>
-          <li>Learning, coding, experimenting ... <span class="Code_cursor">|</span></li>
-          <br>
-        </ul>
-    </div>
-    <br>
-    <span style="color: #69b4ff; text-align: center;">    # Be Better Then Your Yesterday</span>
-    </aside>
-    <aside style="width: 3%;float: right;"></aside>      
-  </section>
-
-
-    <!-- -----------------------project -------------------->
-       <hr style="color: azure;">
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="projects_container">
-    <div class="project_card">
-      <div>
-      <h3>Password checker</h3>
-      <p style ="color: #fff;">Password strength evaluation</p>
-      <p>HTML | CSS | JavaScript</p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Honest portfolio • built with AI assistance</div>
+        <h1>Simple, honest, and disciplined learning.</h1>
+        <p class="lead">
+          I am a student building skills step by step in Python, problem solving, and software basics.
+          This portfolio is not made to pretend I know everything. It is made to show how I learn,
+          what I build, and how I stay responsible when things get hard.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">See projects</a>
+          <a class="btn secondary" href="#process">See my process</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>Learning-first</strong><span>Focused on fundamentals, not shortcuts.</span></div>
+          <div class="stat"><strong>AI-assisted</strong><span>Used honestly as a helper, not a replacement.</span></div>
+          <div class="stat"><strong>Consistency</strong><span>Small progress, repeated daily.</span></div>
+        </div>
       </div>
-     <a href="https://github.com/Ayush2003gn/Password-Checker" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
+    </section>
 
-    <div class="project_card">
-      <div>
-      <h3>AI Chatbot</h3>
-      <p style ="color: #fff;">Conversational AI chatbot using OpenAI API</p>
-      <p>Python | Flask | OpenAI API</p>
+    <section id="about" class="grid-2">
+      <div class="card">
+        <h2 class="section-title">About me</h2>
+        <p class="muted">
+          I am a student who wants to become genuinely skilled over time. I am interested in Python,
+          systems thinking, cybersecurity basics, and practical project building. I do not want to look
+          perfect. I want to be real, improve steadily, and earn trust through work.
+        </p>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Git & GitHub</span>
+          <span class="chip">JSON</span>
+          <span class="chip">Testing</span>
+          <span class="chip">CLI apps</span>
+          <span class="chip">Problem solving</span>
+        </div>
       </div>
-     <a href="https://github.com/Ayush2003gn/Password-Checker" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
 
-    <div class="project_card">
-      <div>
-      <h3>Personal Portfolio</h3>
-      <p style ="color: #fff;">My personal website showcasing projects and skills</p>
-      <p>HTML | CSS | JavaScript</p>
+      <div class="card">
+        <h2 class="section-title">What I value</h2>
+        <div class="timeline">
+          <div class="item"><h3>Honesty</h3><p>I clearly show what I know and what I am still learning.</p></div>
+          <div class="item"><h3>Responsibility</h3><p>I take ownership of mistakes and improve the process.</p></div>
+          <div class="item"><h3>Discipline</h3><p>I focus on consistent work, even when motivation is low.</p></div>
+        </div>
       </div>
-     <a href="https://github.com/Ayush2003gn/Personal-Portfolio" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
+    </section>
 
-    <div class="project_card">
-      <div>
-      <h3>Network Scanner</h3>
-      <p style ="color: #fff;">Python script to scan local network for devices</p>
-      <p>Python | Scapy</p>
+    <section id="projects" class="card">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-list">
+        <article class="project">
+          <div class="project-top">
+            <div>
+              <h3>Yukta \(WIP\)</h3>
+              <small>Python • JSON • OOP • Modular architecture</small>
+            </div>
+          </div>
+          <p class="muted">
+            Yukta is a work-in-progress productivity system currently built as a CLI application and slowly evolving toward a better architecture. This project helped me learn modular design, JSON data handling, logging, file organization, and structured code writing.
+            <br><br>
+            <a href="https://github.com/Ayush2003gn/Yukta" target="_blank">View Project ↗</a>
+          </p> This project helped me understand how to organize a real program instead of just writing
+            isolated scripts.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <div>
+              <h3>Calculator CLI</h3>
+              <small>DMAS logic • CLI • Problem solving</small>
+            </div>
+          </div>
+          <p class="muted">
+            A command-line calculator project that currently follows DMAS rules of mathematics. Later I plan to expand it toward full BODMAS support with bracket handling and better expression parsing.
+            <br><br>
+            <a href="https://github.com/Ayush2003gn/Calculator-CLI" target="_blank">View Project ↗</a>
+          </p> It improved my
+            problem solving, especially around order of operations and bracket handling.
+          </p>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <div>
+              <h3>Learning portfolio</h3>
+              <small>HTML • CSS • Responsive layout</small>
+            </div>
+          </div>
+          <p class="muted">
+            This portfolio itself is a project. I used it to practice clean design, honest storytelling,
+            and a layout that looks simple to readers and recruiters.
+            <br><br>
+            <a href="https://github.com/Ayush2003gn/Ayush2003gn.github.io" target="_blank">View Project ↗</a>
+          </p>
+        </article>
       </div>
-      <a href="https://github.com/Ayush2003gn/Network-Scanner" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
-  </section>
+    </section>
 
-  <hr>
-
-  <!-- -----------------------Labs -------------------->
-  <section id="labs">
-        <h2>Tech Labs</h2>
-    <div class="lab__container">
-
-    <div class="lab">
-      <div>
-      <h3>Network ping test</h3>
-      <p>ping result : 12 ms to 8.8.8.8</p>
+    <section id="process" class="grid-2">
+      <div class="card">
+        <h2 class="section-title">My struggle</h2>
+        <p class="muted">
+          I sometimes overthink before I start, jump too fast into advanced topics, and spend too much time
+          planning instead of building. I do not hide that, because it is part of how I am learning.
+        </p>
+        <div class="chips" style="margin-top:16px;">
+          <span class="chip">Overthinking</span>
+          <span class="chip">Perfectionism</span>
+          <span class="chip">Advanced-topic distraction</span>
+          <span class="chip">Inconsistent focus</span>
+        </div>
       </div>
-      <img src="./images/ping_test.png" alt="Network ping test result">
-      <br>
-      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
 
-    <div class="lab">
-      <div>
-      <h3>Wireshark Analysis</h3>
-      <p>Packet Capture Logs</p>
+      <div class="card">
+        <h2 class="section-title">How I manage it</h2>
+        <div class="timeline">
+          <div class="item"><h3>Fundamentals first</h3><p>I return to the basics before adding complexity.</p></div>
+          <div class="item"><h3>Small builds</h3><p>I finish smaller projects to improve execution and confidence.</p></div>
+          <div class="item"><h3>AI as a guide</h3><p>I use AI to understand, debug, and learn faster without faking my own work.</p></div>
+        </div>
       </div>
-      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_02_33 PM.png" alt="Wireshark packet capture logs">
-      <br>
-      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
+    </section>
 
-    <div class="lab">
-      <div>
-      <h3>Python Script: Port Scanner</h3>
-      <p>Scanning open ports ...</p>
+    <section class="grid-3">
+      <div class="card">
+        <h2 class="section-title">Internship focus</h2>
+        <p class="muted">
+          I want roles where I can learn fast, contribute carefully, and improve through real work.
+        </p>
       </div>
-      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_03_03 PM.png" alt="Port scanner output">
-      <br>
-      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
-
-    <div class="lab">
-      <div>
-        <h3>Linux Commands</h3>
-        <p>grep, cmnod, ifconfig</p>
+      <div class="card">
+        <h2 class="section-title">Future direction</h2>
+        <p class="muted">
+          Python development, better software design, deeper problem solving, and practical technical growth.
+        </p>
       </div>
-      <img src="./images/Zoom Webinar 02_14_2026 ,Sat 9_02_33 PM.png" alt="Linux commands output">
-      <br>
-      <a href="https://github.com/Ayush2003gn/Linux-Commands" target="_blank"><button class="button">View On GitHub</button></a>
-    </div>
+      <div class="card">
+        <h2 class="section-title">Learning style</h2>
+        <p class="muted">
+          Build, test, break, fix, repeat. I learn best when I can see the result of my own work.
+        </p>
+      </div>
+    </section>
 
-  </section>
-  <hr>
-  <!-----------------------Knowledge Vault -------------------->
-  <section id="knowledge_vault">
-    <h2>Knowledge Vault</h2>
-    <div class="knowledge_container">
-    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
-      <h3>Physics Notes</h3>
+    <section id="contact" class="card">
+      <h2 class="section-title">Contact</h2>
+      <p class="muted">
+        GitHub: <a href="https://github.com/Ayush2003gn" target="_blank">github.com/Ayush2003gn</a><br>
+        Website: <a href="https://akm-king.me" target="_blank">akm-king.me</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/ayush-k-mishra" target="_blank">linkedin.com/in/ayush-k-mishra</a><br>
+        Email: <a href="mailto:ayush.gnmishra@gmail.com">ayush.gnmishra@gmail.com</a>
+      </p>
+      <div class="accent-note" style="margin-top:16px;">
+        This portfolio is intentionally simple. It is built to feel honest, readable, and mature enough for
+        recruiters while still showing that I am still learning.
+      </div>
+    </section>
+
+    <div class="footer">
+      Built with honesty, discipline, and AI-assisted learning.
     </div>
-    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
-      <h3>Math Tutorials</h3>
-    </div>
-    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
-      <h3>Python Guides</h3>
-    </div>
-    <div class="knowledge_item" onclick="window.location.href='https://notion.com';">
-      <h3>Networking Tips</h3>
-    </div>
-    </div>
-  </section>
-  <hr style="color: azure;">
-  <!-----------------------About Me -------------------->
-  <section id="about_me">
-    <h2>About Me</h2>
-    <p>Systems Thinker | AI Enthusiast | Developer</p>
-    <p>Class 11 STEM student with a passion for technology, Al, and networking. Focused on building and learning for the long term.</p>
-  </section>
-  <hr>
-  <!-----------------------Contact --- ----------------->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact_info">
-      <p class="eml">Email: <a href="mailto:ayush2003gn@gmail.com">ayush2003gn@gmail.com</a></p>
-      <a href="https://github.com/Ayush2003gn" target="_blank"><span class="fa fa-github"></span></a>
-      <a href="https://linkedin.com/in/ayush2003gn" target="_blank"><span class="fa fa-linkedin"></span></a>
-      <a href="https://twitter.com/Ayush2003gn" target="_blank"><span class="fa fa-twitter"></span></a>
-      <a href="https://facebook.com/Ayush2003gn" target="_blank"><span class="fa fa-facebook"></span></a>
-      <a href="https://instagram.com/Ayush2003gn" target="_blank"><span class="fa fa-instagram"></span></a>
-    </div>
-      
-  </section>
+  </main>
 </body>
 </html>
